@@ -48,14 +48,14 @@ public class WebSeriesService {
 
 
         productionHouseRepository.save(productionHouse);
-
+        webSeriesRepository.save(webSeries);
 
         //Add a webSeries to the database and update the ratings of the productionHouse
         //Incase the seriesName is already present in the Db throw Exception("Series is already present")
         //use function written in Repository Layer for the same
         //Dont forget to save the production and webseries Repo
 
-        return 1;
+        return 123;
     }
 
 }
