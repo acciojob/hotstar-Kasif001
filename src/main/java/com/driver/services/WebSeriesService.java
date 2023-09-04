@@ -22,11 +22,15 @@ public class WebSeriesService {
     public Integer addWebSeries(WebSeriesEntryDto webSeriesEntryDto)throws  Exception{
 
         List<WebSeries> webSeriesList = webSeriesRepository.findAll();
-        for(WebSeries webSeries: webSeriesList){
-            if(webSeries.getSeriesName().equals(webSeriesEntryDto.getSeriesName())){
-                throw new Exception("Series is already present");
+
+        if(!webSeriesList.isEmpty()){
+            for(WebSeries webSeries: webSeriesList){
+                if(webSeries.getSeriesName().equals(webSeriesEntryDto.getSeriesName())){
+                    throw new Exception("Series is already present");
+                }
             }
         }
+
 
         WebSeries webSeries = new WebSeries(webSeriesEntryDto.getSeriesName(),webSeriesEntryDto.getAgeLimit(),webSeriesEntryDto.getRating(),webSeriesEntryDto.getSubscriptionType());
         ProductionHouse productionHouse = productionHouseRepository.findById(webSeriesEntryDto.getProductionHouseId()).get();
